@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BabyService {
@@ -23,6 +24,9 @@ public class BabyService {
     public void addBaby(Baby baby) {
         babyRepository.save(baby);
 
+    }
+    public void removeBaby(Baby baby){
+        babyRepository.delete(baby);
     }
 
 
