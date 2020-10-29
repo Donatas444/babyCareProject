@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
 @Controller
 public class BabyController {
     @Autowired
@@ -40,7 +41,7 @@ public class BabyController {
     }
 
     @GetMapping("/addform")
-    public String addBabyForm(Baby baby){
+    public String addBabyForm(Baby baby) {
         return "baby_add";
     }
 
@@ -57,23 +58,22 @@ public class BabyController {
         return "babies";
     }
 
-    // @PutMapping("/updatebaby")
-    // public void updateBaby(@RequestBody Baby baby) {
-    //
-    //     babyService.updateBaby(baby, baby.getId());
-    //
-    // }
-
+    @PostMapping("/updatebaby/{id}")
+    public String updateBaby(@PathVariable("id") Long id, Baby baby, Model model) {
+        babyService.updateBaby(baby);
+        model.addAttribute("babies", babyService.getAllBabies());
+        return "babies";
+    }
     @GetMapping("/edit/{id}")
     public String showUpdateForm(@PathVariable("id") Long id, Model model) {
         Baby baby = babyService.getBabyById(id);
-         model.addAttribute("baby", baby);
+        model.addAttribute("baby", baby);
         return "baby-edit";
     }
-    @PostMapping("/update/{id}")
+  /*   @PostMapping("/update/{id}")
     public String updateBaby(@PathVariable("id") Long id, Model model, Baby baby, BindingResult result) {
         babyService.addBaby(baby);
         model.addAttribute("babies", babyService.getAllBabies());
         return "babies";
-    }
+    }*/
 }

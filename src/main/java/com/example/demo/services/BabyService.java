@@ -20,7 +20,6 @@ public class BabyService {
         return babyRepository.findById(id).get();
     }
 
-
     public List<Baby> getBabyByName(String name){
         return babyRepository.findBabyByName(name);
     }
@@ -33,6 +32,13 @@ public class BabyService {
     public void removeBaby(Baby baby){
         babyRepository.delete(baby);
     }
+
+
+    public void updateBaby(Baby baby) {
+       // babyRepository.findById(id).get();
+        babyRepository.save(baby);
+    }
+
 
 }
 
