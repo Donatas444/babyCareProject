@@ -6,10 +6,8 @@ import com.example.demo.services.BabyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
-
 @Controller
 public class BabyController {
     @Autowired
@@ -21,16 +19,61 @@ public class BabyController {
         model.addAttribute("babies", babyService.getAllBabies());
         return "babies";
     }
+
+    // @GetMapping("/baby/{id}")
+    // private String getBaby(@PathVariable("id") Long id, Model model) {
+    //     model.addAttribute("baby", babyService.getBabyById(id));
+    //     return "baby";
+    // }
+    @GetMapping("/baby")
+    private String getBaby(String name, Model model) {
+        model.addAttribute("baby", babyService.getBabyByName(name));
+        return "baby";
+    }
+
+
     @PostMapping("/addbaby")
-    public String addbaby(@RequestBody Baby baby, Model model) {
+    public String addbaby(Baby baby, Model model) {
         babyService.addBaby(baby);
         model.addAttribute("babies", babyService.getAllBabies());
         return "babies";
     }
-    @DeleteMapping("/removebaby")
-    public void removeBaby(@PathVariable Long id) {
-        Optional<Baby> baby = babyRepository.findById(id);
-        babyService.removeBaby(baby.get());
 
+    @GetMapping("/addform")
+    public String addBabyForm(Baby baby){
+        return "baby_add";
+    }
+
+    // @GetMapping("/removebaby/{id}")
+    // public void deleteBaby(@PathVariable("id") Baby baby) {
+    //     babyService.removeBaby(baby);
+    // }
+
+    @GetMapping("/deletebaby/{id}")
+    public String deleteBaby(@PathVariable("id") Long id, Model model) {
+        Baby baby = babyService.getBabyById(id);
+        babyService.removeBaby(baby);
+        model.addAttribute("babies", babyService.getAllBabies());
+        return "babies";
+    }
+
+    // @PutMapping("/updatebaby")
+    // public void updateBaby(@RequestBody Baby baby) {
+    //
+    //     babyService.updateBaby(baby, baby.getId());
+    //
+    // }
+
+    @GetMapping("/edit/{id}")
+    public String showUpdateForm(@PathVariable("id") Long id, Model model) {
+        Baby baby = babyService.getBabyById(id);
+         model.addAttribute("baby", baby);
+        return "baby-edit";
+    }
+    @PostMapping("/update/{id}")
+    public String updateBaby(@PathVariable("id") Long id, Model model, Baby baby, BindingResult result) {
+        babyService.addBaby(baby);
+        model.addAttribute("babies", babyService.getAllBabies());
+        return "babies";
     }
 }

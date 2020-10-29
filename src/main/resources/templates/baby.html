@@ -30,8 +30,9 @@
             <td>Name</td>
 
         </tr>
-        <tr th:each="baby: ${babies}">
+
             <td th:text="${baby.name}">Name</td>
+            <td th:text="${baby.age}">Age</td>
         </tr>
     </table>
 </div>

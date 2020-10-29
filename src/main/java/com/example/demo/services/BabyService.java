@@ -4,13 +4,8 @@ import com.example.demo.models.Baby;
 import com.example.demo.repositories.BabyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BabyService {
@@ -21,14 +16,23 @@ public class BabyService {
         return (List<Baby>) babyRepository.findAll();
     }
 
+    public Baby getBabyById(Long id) {
+        return babyRepository.findById(id).get();
+    }
+
+
+    public List<Baby> getBabyByName(String name){
+        return babyRepository.findBabyByName(name);
+    }
+
     public void addBaby(Baby baby) {
         babyRepository.save(baby);
-
     }
+
+
     public void removeBaby(Baby baby){
         babyRepository.delete(baby);
     }
-
 
 }
 
