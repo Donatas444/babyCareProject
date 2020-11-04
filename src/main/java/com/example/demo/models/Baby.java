@@ -1,14 +1,22 @@
 package com.example.demo.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 public class Baby {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
+
+
+    @OneToMany(mappedBy="baby", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<Feeding> feedings;
 
     private String name;
 

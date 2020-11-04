@@ -1,8 +1,10 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.Baby;
+import com.example.demo.models.Feeding;
 import com.example.demo.repositories.BabyRepository;
 import com.example.demo.services.BabyService;
+import com.example.demo.services.FeedingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +15,15 @@ import org.springframework.web.bind.annotation.*;
 public class BabyController {
     @Autowired
     private BabyService babyService;
-    private BabyRepository babyRepository;
+    @Autowired
+    private FeedingService feedingService;
+   // private BabyRepository babyRepository;
+
 
     @GetMapping("/babies")
     public String getAllBabies(Model model) {
         model.addAttribute("babies", babyService.getAllBabies());
+     model.addAttribute("feedings", feedingService.getAllFeeding());
         return "babies";
     }
 
@@ -55,14 +61,14 @@ public class BabyController {
         Baby baby = babyService.getBabyById(id);
         babyService.removeBaby(baby);
         model.addAttribute("babies", babyService.getAllBabies());
-        return "babies";
+        return "redirect:/babies";
     }
 
     @PostMapping("/updatebaby/{id}")
     public String updateBaby(@PathVariable("id") Long id, Baby baby, Model model) {
         babyService.updateBaby(baby);
         model.addAttribute("babies", babyService.getAllBabies());
-        return "babies";
+        return "redirect:/babies";
     }
     @GetMapping("/edit/{id}")
     public String showUpdateForm(@PathVariable("id") Long id, Model model) {

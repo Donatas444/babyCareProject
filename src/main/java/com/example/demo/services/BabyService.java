@@ -12,9 +12,13 @@ public class BabyService {
     @Autowired
     private BabyRepository babyRepository;
 
+
+
     public List<Baby> getAllBabies() {
         return (List<Baby>) babyRepository.findAll();
     }
+
+
 
     public Baby getBabyById(Long id) {
         return babyRepository.findById(id).get();

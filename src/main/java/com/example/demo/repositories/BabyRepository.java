@@ -8,6 +8,7 @@ import java.util.List;
 
 @Repository
 public interface BabyRepository extends CrudRepository<Baby, Long> {
+
     List<Baby> findBabyByName(String name);
 
 }

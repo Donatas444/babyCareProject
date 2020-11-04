@@ -9,14 +9,22 @@ public class Feeding {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long feedingId;
 
+    @ManyToOne
+    @JoinColumn(name="id")
+    private Baby baby;
 
-    private Long babyId;
+
+private Long babyId;
 
     private LocalDate feedingDate;
 
+
     private Integer feedingTime;
 
-    private Long feedingTypeId;
+    private Long feedingType;
+
+    public Feeding() {
+    }
 
 
     public Long getFeedingId() {
@@ -25,6 +33,14 @@ public class Feeding {
 
     public void setFeedingId(Long feedingId) {
         this.feedingId = feedingId;
+    }
+
+    public Baby getBaby() {
+        return baby;
+    }
+
+    public void setBaby(Baby baby) {
+        this.baby = baby;
     }
 
     public Long getBabyId() {
@@ -51,11 +67,11 @@ public class Feeding {
         this.feedingTime = feedingTime;
     }
 
-    public Long getFeedingTypeId() {
-        return feedingTypeId;
+    public Long getFeedingType() {
+        return feedingType;
     }
 
-    public void setFeedingTypeId(Long feedingTypeId) {
-        this.feedingTypeId = feedingTypeId;
+    public void setFeedingType(Long feedingType) {
+        this.feedingType = feedingType;
     }
 }
