@@ -2,6 +2,7 @@ package com.example.demo.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Feeding {
@@ -10,11 +11,11 @@ public class Feeding {
     private Long feedingId;
 
     @ManyToOne
-    @JoinColumn(name="id")
+    @JoinColumn(name = "id")
     private Baby baby;
 
 
-private Long babyId;
+    private Long babyId;
 
     private LocalDate feedingDate;
 
@@ -22,6 +23,11 @@ private Long babyId;
     private Integer feedingTime;
 
     private Long feedingType;
+
+    @OneToMany(mappedBy="feeding", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<FoodType> foodTypes;
+
 
     public Feeding() {
     }
