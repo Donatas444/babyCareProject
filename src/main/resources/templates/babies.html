@@ -38,7 +38,7 @@
 
         <tr role="row" class="odd" th:each="feeding:${feedings}">
             <td>
-                <p th:each="baby : ${babies}" th:if="(${baby.id} == ${feeding.feedingId})" th:text="${baby.name}"></p>
+                <p th:each="baby : ${babies}" th:if="(${baby.id} == ${feeding.babyId})" th:text="${baby.name}"></p>
             </td>
 
             <td th:text="${feeding.feedingDate}">

@@ -17,13 +17,13 @@ public class BabyController {
     private BabyService babyService;
     @Autowired
     private FeedingService feedingService;
-   // private BabyRepository babyRepository;
+
 
 
     @GetMapping("/babies")
     public String getAllBabies(Model model) {
         model.addAttribute("babies", babyService.getAllBabies());
-     model.addAttribute("feedings", feedingService.getAllFeeding());
+        model.addAttribute("feedings", feedingService.getAllFeeding());
         return "babies";
     }
 
@@ -70,6 +70,7 @@ public class BabyController {
         model.addAttribute("babies", babyService.getAllBabies());
         return "redirect:/babies";
     }
+
     @GetMapping("/edit/{id}")
     public String showUpdateForm(@PathVariable("id") Long id, Model model) {
         Baby baby = babyService.getBabyById(id);
