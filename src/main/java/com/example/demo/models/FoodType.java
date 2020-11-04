@@ -15,6 +15,7 @@ public class FoodType {
     @JoinColumn(name = "feedingId")
     private Feeding feeding;
 
+
     public FoodType() {
     }
 
@@ -56,5 +57,16 @@ public class FoodType {
 
     public void setFeeding(Feeding feeding) {
         this.feeding = feeding;
+    }
+
+    @Override
+    public String toString() {
+        return "FoodType{" +
+                "foodTypeId=" + foodTypeId +
+                ", formulaMl=" + formulaMl +
+                ", leftBreastTimer=" + leftBreastTimer +
+                ", rightBreastTimer=" + rightBreastTimer +
+                ", feeding=" + feeding +
+                '}';
     }
 }

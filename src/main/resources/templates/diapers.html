@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Baby care project</title>
+
+
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <!--  <link rel="stylesheet" type="text/css" href="btn-new.css"> -->
+
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Diapers list</a>
+
+
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="page-header">
+        <h1>Diapers</h1>
+    </div>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <td>Time Diapers Changed</td>
+
+        </tr>
+        <tr th:each="diapers: ${diapers}">
+            <td th:text="${diapers.timeDiapersChanged}">Time Diapers Changed</td>
+        </tr>
+
+    </table>
+</div>
+<footer class="footer navbar-inverse navbar-fixed-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"><p class="text-muted">2020 Donatas Lunys</p></div>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>

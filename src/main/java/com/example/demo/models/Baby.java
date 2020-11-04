@@ -18,6 +18,10 @@ public class Baby {
             cascade = CascadeType.ALL)
     private List<Feeding> feedings;
 
+    @OneToMany(mappedBy="baby", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<Diapers> diapers;
+
     private String name;
 
     private Integer age;

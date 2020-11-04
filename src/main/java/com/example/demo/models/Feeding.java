@@ -80,4 +80,17 @@ public class Feeding {
     public void setFeedingType(Long feedingType) {
         this.feedingType = feedingType;
     }
+
+    @Override
+    public String toString() {
+        return "Feeding{" +
+                "feedingId=" + feedingId +
+                ", baby=" + baby +
+                ", babyId=" + babyId +
+                ", feedingDate=" + feedingDate +
+                ", feedingTime=" + feedingTime +
+                ", feedingType=" + feedingType +
+                ", foodTypes=" + foodTypes +
+                '}';
+    }
 }
