@@ -27,16 +27,16 @@ public class BabyController {
         return "babies";
     }
 
-    // @GetMapping("/baby/{id}")
-    // private String getBaby(@PathVariable("id") Long id, Model model) {
-    //     model.addAttribute("baby", babyService.getBabyById(id));
-    //     return "baby";
-    // }
-    @GetMapping("/baby")
-    private String getBaby(String name, Model model) {
-        model.addAttribute("baby", babyService.getBabyByName(name));
+    @GetMapping("/baby/{id}")
+    private String getBaby(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("baby", babyService.getBabyById(id));
         return "baby";
     }
+    // @GetMapping("/baby")
+    // private String getBaby(String name, Model model) {
+    //     model.addAttribute("baby", babyService.getBabyByName(name));
+    //     return "baby";
+    // }
 
 
     @PostMapping("/addbaby")
@@ -83,4 +83,11 @@ public class BabyController {
         model.addAttribute("babies", babyService.getAllBabies());
         return "babies";
     }*/
+
+
+    @GetMapping("/index")
+    public String getIndex(Model model) {
+
+        return "index";
+    }
 }

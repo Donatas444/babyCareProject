@@ -1,0 +1,15 @@
+.container {
+  padding: 80px 120px;
+}
+
+.h1{
+padding: 80px 120px;
+}
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.navbar-header{
+background-color: green;
+}
