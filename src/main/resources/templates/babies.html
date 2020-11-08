@@ -18,7 +18,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">Babies list</a>
+            <a class="navbar-brand" href="/">Start page</a>
             <a class="btn btn-primary" href="/addform">Add baby</a>
 
         </div>
@@ -31,31 +31,26 @@
     <table class="table table-striped table-bordered">
         <tr>
             <th>Name</th>
-            <th>Date</th>
+            <th>Age</th>
+
+
 
         </tr>
 
 
 
-        <tr role="row" class="odd" th:each="feeding:${feedings}">
-            <td>
-                <p th:each="baby : ${babies}" th:if="(${baby.id} == ${feeding.babyId})" th:text="${baby.name}"></p>
-            </td>
+     <tr th:each="baby: ${babies}">
 
-            <td th:text="${feeding.feedingDate}">
-        </tr>
-    <!--    <tr th:each="baby: ${babies}">
-            <td th:text="${baby.name}">Name</td>
+         <td> <a th:href="@{/baby/{id}(id=${baby.id})}"  th:text="${baby.name}" target="_self">Name</a></td>
             <td th:text="${baby.age}">Age</td>
+
 
             <td><a th:href="@{/edit/{id}(id=${baby.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
             </td>
             <td><a th:href="@{/deletebaby/{id}(id=${baby.id})}" class="btn btn-primary"><i
                     class="fas fa-user-times ml-2"></i></a></td>
-        </tr>
-        <tr th:each="feeding: ${feedings}">
-            <td th:text="${feeding.feedingDate}">Date</td>
-        </tr> -->
+
+
         <!--       <tr th:each="feeding: ${feedings}">
               <td th:text="${feeding.feedingDate}">Date</td>
               <td th:text="${feeding.feedingTime}">Time</td>

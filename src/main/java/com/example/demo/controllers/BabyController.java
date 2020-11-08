@@ -18,7 +18,11 @@ public class BabyController {
     @Autowired
     private FeedingService feedingService;
 
+    @GetMapping("/")
+    public String getIndex(Model model) {
 
+        return "index";
+    }
 
     @GetMapping("/babies")
     public String getAllBabies(Model model) {
@@ -30,7 +34,8 @@ public class BabyController {
     @GetMapping("/baby/{id}")
     private String getBaby(@PathVariable("id") Long id, Model model) {
         model.addAttribute("baby", babyService.getBabyById(id));
-        return "baby";
+        model.addAttribute("feedings", feedingService.getAllFeeding());
+        return "/baby";
     }
     // @GetMapping("/baby")
     // private String getBaby(String name, Model model) {
@@ -40,7 +45,7 @@ public class BabyController {
 
 
     @PostMapping("/addbaby")
-    public String addbaby(Baby baby, Model model) {
+    public String addbaby(Baby baby, Model model) {  // pries Baby baby pridejus @RequestBody nenukreipia atgal i "babies" url'a
         babyService.addBaby(baby);
         model.addAttribute("babies", babyService.getAllBabies());
         return "babies";
@@ -85,9 +90,5 @@ public class BabyController {
     }*/
 
 
-    @GetMapping("/index")
-    public String getIndex(Model model) {
 
-        return "index";
-    }
 }

@@ -1,0 +1,22 @@
+
+
+
+#logotipas{
+
+ max-width: 200px;
+  height: auto;
+}
+
+.navbar-inverse{
+    background-color: white;
+
+ }
+
+.navbar-nav{
+float: right;
+}
+.footer {
+    clear: both;
+    position: relative;
+
+}

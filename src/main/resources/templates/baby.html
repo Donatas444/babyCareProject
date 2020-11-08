@@ -18,7 +18,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">Babies list</a>
+            <a class="navbar-brand" href="/">Start page</a>
         </div>
     </div>
 </nav>
@@ -30,12 +30,30 @@
         <tr>
             <td>Name</td>
             <td>Age</td>
+            <td>Date</td>
 
-        </tr>
+  <!--      </tr>
 
             <td th:text="${baby.name}">Name</td>
             <td th:text="${baby.age}">Age</td>
+        <td th:if="${baby.id == feeding.babyId}">  cia nebaigiau tvarkyti
+            <ul>
+                <li th:text=${feeding.feedingDate}>Date</li>
+            </ul>
+        </td>   -->
+
+        <tr th:each="baby:${babies}">
+
+            <td
+                th:each="feeding : ${feedings}" th:if="(${feeding.babyId} == ${baby.id})" th:text="${feeding.feedingDate}">Date
+            </td>
+        <td th:text="${baby.name}">Name</td>
         </tr>
+
+
+        </tr>
+
+
     </table>
 </div>
 <footer class="footer navbar-inverse navbar-fixed-bottom">

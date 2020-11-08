@@ -10,7 +10,7 @@ import java.util.Set;
 public class Baby {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO) //Identity
     private Long id;
 
 
