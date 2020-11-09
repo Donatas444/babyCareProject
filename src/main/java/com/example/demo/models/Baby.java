@@ -14,7 +14,7 @@ public class Baby {
     private Long id;
 
 
-    @OneToMany(mappedBy="baby", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy="baby", fetch = FetchType.EAGER,
             cascade = CascadeType.ALL)
     private List<Feeding> feedings;
 
@@ -24,13 +24,13 @@ public class Baby {
 
     private String name;
 
-    private Integer age;
+    private double age;
 
-    public Integer getAge() {
+    public double getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(double age) {
         this.age = age;
     }
 
@@ -54,7 +54,10 @@ public class Baby {
     public String toString() {
         return "Baby{" +
                 "id=" + id +
+                ", feedings=" + feedings +
+                ", diapers=" + diapers +
                 ", name='" + name + '\'' +
+                ", age=" + age +
                 '}';
     }
 }
