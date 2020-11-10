@@ -24,6 +24,12 @@ public class BabyController {
         return "index";
     }
 
+    @GetMapping("/process")
+    public String getProcessPage(Model model) {
+
+        return "baby-processing";
+    }
+
     @GetMapping("/babies")
     public String getAllBabies(Model model) {
         model.addAttribute("babies", babyService.getAllBabies());
