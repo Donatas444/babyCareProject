@@ -8,8 +8,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-  <!--   <link rel="stylesheet" type="text/css" href="styles.css"> -->
-
+    <!--   <link rel="stylesheet" type="text/css" href="styles.css"> -->
 
 </head>
 <body>
@@ -23,8 +22,8 @@
 <div class="container my-5">
     <h1 class="mb-5">Controller</h1>
     <div>
-       <h2>
-           <label th:text="${baby.name} + ' feeding:'"></label>
+        <h2>
+            <label th:text="${baby.name} + ' feeding:'"></label>
         </h2>
     </div>
 
@@ -33,7 +32,8 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Left breast</h5>
-                    <p class="card-text">After pressing the "Start feeding" button timer starts to count your left breast feeding time.</p>
+                    <p class="card-text">After pressing the "Start feeding" button timer starts to count your left
+                        breast feeding time.</p>
                     <a href="#" class="btn btn-primary">Star feeding</a>
                 </div>
             </div>
@@ -42,7 +42,8 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Right breast</h5>
-                    <p class="card-text">After pressing the "Start feeding" button timer starts to count your right breast feeding time.</p>
+                    <p class="card-text">After pressing the "Start feeding" button timer starts to count your right
+                        breast feeding time.</p>
                     <a href="#" class="btn btn-primary">Start feeding</a>
                 </div>
             </div>
@@ -54,17 +55,30 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="name" class="col-form-label">Formula (ml)</label>
-                        <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Enter amount in ml">
+                        <input type="text" th:field="*{name}" class="form-control" id="name"
+                               placeholder="Enter amount in ml">
                         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
                     </div>
                 </div>
+
+                <h2>
+                    Diapers changed:
+                </h2>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary">+</button>
+                    <button type="button" class="btn btn-secondary">-</button>
+                </div>
                 <div class="row">
                     <div class="col-md-6 mt-5">
-                        <input type="submit" class="btn btn-primary" value="Save entries">
+                        <input type="submit" class="btn btn-warning btn-lg" value="Save entries">
                     </div>
                 </div>
+
+
             </form>
         </div>
+
+
     </div>
 </div>
 
@@ -82,13 +96,13 @@
         <tr>
             <td th:text="${baby.name}">Name
             </td>
-          <td>
-                 <li   th:each="feeding : ${feedings}"
+            <td>
+                <li th:each="feeding : ${feedings}"
                     th:if="(${feeding.babyId} == ${baby.id})"
 
-                       th:text="${feeding.feedingDate}">Date
-                 </li>
-          </td>
+                    th:text="${feeding.feedingDate}">Date
+                </li>
+            </td>
         </tr>
     </table>
 </div>
