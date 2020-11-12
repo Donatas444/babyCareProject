@@ -2,13 +2,15 @@ package com.example.demo.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 public class Diapers {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private boolean diaperId;
-    private LocalDate timeDiapersChanged;
+    private LocalDate dateDiapersChanged;
+    private LocalTime timeDiapersChanged;
     @ManyToOne
     @JoinColumn(name = "id")
     private Baby baby;
@@ -24,12 +26,12 @@ public class Diapers {
         this.diaperId = diaperId;
     }
 
-    public LocalDate getTimeDiapersChanged() {
-        return timeDiapersChanged;
+    public LocalDate getDateDiapersChanged() {
+        return dateDiapersChanged;
     }
 
-    public void setTimeDiapersChanged(LocalDate timeDiapersChanged) {
-        this.timeDiapersChanged = timeDiapersChanged;
+    public void setDateDiapersChanged(LocalDate dateDiapersChanged) {
+        this.dateDiapersChanged = dateDiapersChanged;
     }
 
     public Baby getBaby() {
@@ -40,10 +42,19 @@ public class Diapers {
         this.baby = baby;
     }
 
+    public LocalTime getTimeDiapersChanged() {
+        return timeDiapersChanged;
+    }
+
+    public void setTimeDiapersChanged(LocalTime timeDiapersChanged) {
+        this.timeDiapersChanged = timeDiapersChanged;
+    }
+
     @Override
     public String toString() {
         return "Diapers{" +
                 "diaperId=" + diaperId +
+                ", dateDiapersChanged=" + dateDiapersChanged +
                 ", timeDiapersChanged=" + timeDiapersChanged +
                 ", baby=" + baby +
                 '}';

@@ -1,23 +1,22 @@
 
-
-
 #logotipas{
 
  max-width: 200px;
   height: auto;
 }
-
 .navbar-inverse{
     background-color: white;
-
  }
-
 .navbar-nav{
 float: right;
 }
 .footer {
     clear: both;
     position: relative;
-
 }
-body {background-color: coral; !important}
+/*body{
+  background-image: url("background.jpg");
+
+
+  background-repeat: no-repeat;
+}*/

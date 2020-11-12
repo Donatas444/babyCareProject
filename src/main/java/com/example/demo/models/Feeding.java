@@ -2,6 +2,8 @@ package com.example.demo.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,11 +18,8 @@ public class Feeding {
 
 
     private Long babyId;
-
     private LocalDate feedingDate;
-
-
-    private Integer feedingTime;
+    private LocalTime feedingTime;
 
     private Long feedingType;
 
@@ -65,11 +64,11 @@ public class Feeding {
         this.feedingDate = feedingDate;
     }
 
-    public Integer getFeedingTime() {
+    public LocalTime getFeedingTime() {
         return feedingTime;
     }
 
-    public void setFeedingTime(Integer feedingTime) {
+    public void setFeedingTime(LocalTime feedingTime) {
         this.feedingTime = feedingTime;
     }
 
@@ -79,6 +78,15 @@ public class Feeding {
 
     public void setFeedingType(Long feedingType) {
         this.feedingType = feedingType;
+    }
+
+
+    public List<FoodType> getFoodTypes() {
+        return foodTypes;
+    }
+
+    public void setFoodTypes(List<FoodType> foodTypes) {
+        this.foodTypes = foodTypes;
     }
 
     @Override
