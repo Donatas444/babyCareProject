@@ -1,4 +1,4 @@
-
+/*
 #logotipas{
 
  max-width: 200px;
@@ -14,7 +14,7 @@ float: right;
     clear: both;
     position: relative;
 }
-/*body{
+body{
   background-image: url("background.jpg");
 
 

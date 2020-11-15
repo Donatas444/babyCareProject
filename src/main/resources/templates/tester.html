@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+<script src="javascript.js"></script>
 </head>
 <body>
 <div>
     <h2>
-        <label th:text="${#temporals.format(localDateTime, 'dd-MM-yyyy HH:mm')}"></label>
-    </h2>
-</div>
-</body>
-</html>
+        <!--    <label th:text="${#temporals.format(localDateTime, 'dd-MM-yyyy HH:mm')}"></label>
+         <label th:text="*{showTime}"></label> -->
+
+        <div>
+            <span id="hour" ></span>
+            <span>: </span>
+            <span id="minute"></span>
+            <span>: </span>
+            <span id="seconds"></span>
+        </div>
+       <!-- <div>Minute: <span id="minute"></span></div>
+        <div>Second: <span id="seconds"></span></div> -->
+
+        <button id="start-btn">Start</button>
+        <button id="stop-btn">Stop</button>
+        <button id="reset-btn">Reset</button>
+       </h2>
+   </div>
+   </body>
+   </html>

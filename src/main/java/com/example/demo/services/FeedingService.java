@@ -36,11 +36,12 @@ public class FeedingService {
     public void updateFeeding(Feeding feeding) {
         feedingRepository.save(feeding);
     }
-    public static void getCurrentTime() {
+    public static String getCurrentTime() {
         Date date = new Date();
         String stringDateFormat = "hh:mm:ss a";
         DateFormat dateFormat = new SimpleDateFormat(stringDateFormat);
         String formattedDate= dateFormat.format(date);
+        return formattedDate;
     }
     public static long getTimeDifference(Date date1, Date date2, TimeUnit timeUnit) {
         long differenceInMilliSec = date2.getTime() - date1.getTime();

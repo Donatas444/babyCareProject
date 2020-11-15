@@ -18,7 +18,7 @@ public class Feeding {
 
 
     private Long babyId;
-    private LocalDate feedingDate;
+    private String feedingDate;
     private LocalTime feedingTime;
 
     private Long feedingType;
@@ -56,11 +56,11 @@ public class Feeding {
         this.babyId = babyId;
     }
 
-    public LocalDate getFeedingDate() {
+    public String getFeedingDate() {
         return feedingDate;
     }
 
-    public void setFeedingDate(LocalDate feedingDate) {
+    public void setFeedingDate(String feedingDate) {
         this.feedingDate = feedingDate;
     }
 
