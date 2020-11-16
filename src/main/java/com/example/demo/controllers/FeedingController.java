@@ -56,27 +56,37 @@ public class FeedingController {
         model.addAttribute("feedings", feedingService.getAllFeeding());
         return "redirect:/feedings";
     }
-    @RequestMapping("/showform")
-    public String showForm(LocalDate localDate, Model model) {
-        model.addAttribute("localDate", LocalDate.now());
-        return "tester2";
-    }
 
+    // @RequestMapping("/showform")
+    // public String showForm(LocalDate localDate, Model model) {
+    //     model.addAttribute("localDate", LocalDate.now());
+    //     return "tester2";
+    // }
 
-
+//sutvarkyti sita.....
     @PostMapping("/assignfeeding/{babyId}")
-    public Feeding createFeeding(@PathVariable Long babyId, @RequestBody Feeding feeding) {
-     //   Optional<Baby> baby = babyService.getBabyById(babyId);
+    public Feeding createFeeding(@PathVariable Long id, Long babyId, Baby baby, @RequestBody Feeding feeding) {
 
-     //       feeding.setBaby(baby.get());
-            feedingService.addFeeding(feeding);
-            return feeding;
-        }
+
+        // babyService.getBabyById(id);
+        // feedingService.getFeedingById(babyId);
+        // feeding.setBaby(baby);
+        //     feeding.setBaby(baby.get());
+        // feedingService.addFeeding(feeding);
+        return feeding;
+    }
+//save user's object
+
+    @RequestMapping("/showform")
+    public String showForm(Model model) {
+        model.addAttribute("feedings");
+        return "tester";
+    }
 
 
     @RequestMapping(value = "/processform", method = RequestMethod.POST)
     public String processForm(@ModelAttribute(value = "foo") Feeding feeding) {
-return "";
+        return "";
     }
 
 

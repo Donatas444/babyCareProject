@@ -19,7 +19,7 @@ public class Feeding {
 
     private Long babyId;
     private String feedingDate;
-    private LocalTime feedingTime;
+    private String feedingTime;
 
     private Long feedingType;
 
@@ -64,11 +64,11 @@ public class Feeding {
         this.feedingDate = feedingDate;
     }
 
-    public LocalTime getFeedingTime() {
+    public String getFeedingTime() {
         return feedingTime;
     }
 
-    public void setFeedingTime(LocalTime feedingTime) {
+    public void setFeedingTime(String feedingTime) {
         this.feedingTime = feedingTime;
     }
 

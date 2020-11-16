@@ -1,4 +1,4 @@
-     window.onload = () => {
+    window.onload = () => {
    let hour = 0;
    let minute = 0;
    let seconds = 0;
