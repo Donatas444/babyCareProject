@@ -78,7 +78,7 @@ public class FeedingController {
 //save user's object
 
     @RequestMapping("/showform")
-    public String showForm(Model model) {
+    public String showForm() {
 
         return "tester";
     }
