@@ -79,7 +79,7 @@ public class FeedingController {
 
     @RequestMapping("/showform")
     public String showForm(Model model) {
-        model.addAttribute("feedings");
+
         return "tester";
     }
 
