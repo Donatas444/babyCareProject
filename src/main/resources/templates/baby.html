@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-   <!--<link rel="stylesheet" type="text/css" href="styles.css">-->
-
+    <link rel="stylesheet" type="text/css" href="styles.css">
 
 
 </head>
@@ -22,6 +21,7 @@
         </div>
     </div>
 </nav>
+
 <div class="container my-5">
     <h1 class="mb-5">Controller</h1>
     <div>
@@ -30,138 +30,155 @@
         </h2>
     </div>
     <form action="#" th:action="@{/addfeeding}" th:object="${feeding}" method="post">
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Left breast</h5>
-                    <p class="card-text">After pressing the "Start feeding" button timer starts to count your left
-                        breast feeding time. After you finish, press "Stop feeding".</p>
-                    <input name="feedingDate" id="feedingDate" th:value="${#dates.format(#dates.createNow() , 'yyyy-MM-dd')}"/>
 
-                    <input  name="babyId" id="babyId" th:value="${baby.id}"/>
+        <div  class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="input-group mb-3">
+
+                            <select class="custom-select" onchange="location = this.value;">
+                                <option selected>Choose...</option>
+                                <option value="/babies">Left breast</option>
+                                <option value="2">Right breast</option>
+                                <option value="3">Formula</option>
+
+                            </select>
+                        </div>
+
+                        <h5 class="card-title">Left breast</h5>
+                        <p class="card-text">After pressing the "Start feeding" button timer starts to count your left
+                            breast feeding time. After you finish, press "Stop feeding".</p>
+                        <input type="hidden" name="feedingDate" id="feedingDate"
+                               th:value="${#dates.format(#dates.createNow() , 'yyyy-MM-dd')}"/>
+                        <input type="hidden" name="babyId" id="babyId" th:value="${baby.id}"/>
+
+                        <div>
+                            <label class="field">Start time:</label>
+                            <input type="time" id="start" th:value="${#dates.format(#dates.createNow() , 'HH:mm')}">
+                        </div>
+                        <div>
+                            <label class="field">Stop time:</label>
+                            <input type="time" id="end"
+                                   th:value="${#dates.format(#dates.createNow() , 'HH:mm')}"></input>
+                        </div>
+                        <input type="hidden" name="feedingTime" id="diff"/>
+                        <div class="row">
+                            <div class="col-md-6 mt-5">
+                                <input type="submit" class="btn btn-warning btn-lg" value="Save entries">
+                            </div>
+                        </div>
+
+                        <script>
+var start = document.getElementById("start").value;
+var end = document.getElementById("end").value;
+
+document.getElementById("start").onchange = function() {diff(start,end)};
+document.getElementById("end").onchange = function() {diff(start,end)};
+
+
+function diff(start, end) {
+    start = document.getElementById("start").value;
+    end = document.getElementById("end").value;
+
+    start = start.split(":");
+    end = end.split(":");
+    var startDate = new Date(0, 0, 0, start[0], start[1], 0);
+    var endDate = new Date(0, 0, 0, end[0], end[1], 0);
+    var diff = endDate.getTime() - startDate.getTime();
+    var hours = Math.floor(diff / 1000 / 60 / 60);
+    diff -= hours * 1000 * 60 * 60;
+    var minutes = Math.floor(diff / 1000 / 60);
+
+    return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
+}
+
+setInterval(function(){document.getElementById("diff").value = diff(start, end);}, 1000);
 
 
 
 
 
-                    <input  name="feedingTime" id="feedingTime" th:value="${#dates.format(#dates.createNow() , 'HH:mm')}"/>
-                  <!--  <button name="feedingTime" id="feedingTime" value="${#dates.format(#dates.createNow() , 'HH:mm')}" class="btn btn-success">Start feeding</button> -->
-                    <a href="#" class="btn btn-danger">Stop feeding</a>
-
-
+                        </script>
                     </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Right breast</h5>
-                    <p class="card-text">After pressing the "Start feeding" button timer starts to count your right
-                        breast feeding time. After you finish, press "Stop feeding".</p>
-
-                    <a href="#" class="btn btn-success">Start feeding</a>
-                    <a href="#" class="btn btn-danger">Stop feeding</a>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 
-    <div class="row">
-        <div class="col-md-6 mt-5">
-            <input type="submit" class="btn btn-warning btn-lg" value="Save entries">
+
+    </form>
+<form>
+    <div  class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="col-md-6">
+                        <form action="#" th:action="@{/addbaby}" th:object="${baby}" method="post">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="name" class="col-form-label">Formula (ml)</label>
+                                    <input type="text" th:field="*{name}" class="form-control" id="name"
+                                           placeholder="Enter amount in ml">
+                                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                                          class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <h2>
+                                Diapers changed:
+                            </h2>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+
+                            </div>
+                            <!--      <div class="btn-group" role="group" aria-label="Basic example">
+                                     <button type="button" class="btn btn-secondary">+</button>
+                                     <button type="button" class="btn btn-secondary">-</button>
+
+                            </div> -->
+                            <div class="row">
+                                <div class="col-md-6 mt-5">
+                                    <input type="submit" class="btn btn-warning btn-lg" value="Save entries">
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </form>
 
-    <div class="row">
-        <div class="col-md-6">
-            <form action="#" th:action="@{/addbaby}" th:object="${baby}" method="post">
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="name" class="col-form-label">Formula (ml)</label>
-                        <input type="text" th:field="*{name}" class="form-control" id="name"
-                               placeholder="Enter amount in ml">
-                        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
-                    </div>
-                </div>
 
-                <h2>
-                    Diapers changed:
-                </h2>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-
-                </div>
-                <!--      <div class="btn-group" role="group" aria-label="Basic example">
-                         <button type="button" class="btn btn-secondary">+</button>
-                         <button type="button" class="btn btn-secondary">-</button>
-
-                </div> -->
-                <div class="row">
-                    <div class="col-md-6 mt-5">
-                        <input type="submit" class="btn btn-warning btn-lg" value="Save entries">
-                    </div>
-                </div>
-
-
-            </form>
+    <div class="container">
+        <div class="page-header">
+            <h2>Baby info</h2>
         </div>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+            </tr>
 
+            <tr>
+                <td th:text="${baby.name}">Name
+                </td>
+                <td>
+                    <li th:each="feeding : ${feedings}"
+                        th:if="(${feeding.babyId} == ${baby.id})"
 
+                        th:text="${feeding.feedingDate}">Date
+                    </li>
+                </td>
+            </tr>
+        </table>
     </div>
-</div>
 
 
-<div class="container">
-    <div class="page-header">
-        <h2>Baby info</h2>
-    </div>
-    <table class="table table-striped table-bordered">
-        <tr>
-            <th>Name</th>
-            <th>Date</th>
-        </tr>
-
-        <tr>
-            <td th:text="${baby.name}">Name
-            </td>
-            <td>
-                <li th:each="feeding : ${feedings}"
-                    th:if="(${feeding.babyId} == ${baby.id})"
-
-                    th:text="${feeding.feedingDate}">Date
-                </li>
-            </td>
-        </tr>
-    </table>
-</div>
-
-
-<div>
-<input type="time"  id="start" value="10:00" >
-<input type="time" id="end" value="12:30" >
-<input id="diff">
-<button type="button" onclick="diff(start, end)">Try it</button>
-<h2>
-    <!--    <label th:text="${#temporals.format(localDateTime, 'dd-MM-yyyy HH:mm')}"></label>
-     <label th:text="*{showTime}"></label> -->
-
-    <div>
-        <span id="hour" ></span>
-        <span>: </span>
-        <span id="minute"></span>
-        <span>: </span>
-        <span id="seconds"></span>
-    </div>
-    <!-- <div>Minute: <span id="minute"></span></div>
-     <div>Second: <span id="seconds"></span></div> -->
-
-    <button id="start-btn">Start</button>
-    <button id="stop-btn">Stop</button>
-    <button id="reset-btn">Reset</button>
-</h2>
 </div>
 <footer class="footer navbar-inverse navbar-fixed-bottom">
     <div class="container">
@@ -173,7 +190,66 @@
 </footer>
 
 
-<script type="text/javascript" src="javascript.js"></script>
-<script type="text/javascript" src="timerjavascript.js"></script>
+<h2>
+    <div>
+        <span id="hour"></span>
+        <span>: </span>
+        <span id="minute"></span>
+        <span>: </span>
+        <span id="seconds"></span>
+    </div>
+
+
+    <button id="start-btn">Start</button>
+    <button id="stop-btn">Stop</button>
+    <button id="reset-btn">Reset</button>
+</h2>
+<script>    window.onload = () => {
+    let hour = 0;
+    let minute = 0;
+    let seconds = 0;
+    let totalSeconds = 0;
+
+    function startTimer() {
+        ++totalSeconds;
+        hour = Math.floor(totalSeconds /3600);
+        minute = Math.floor((totalSeconds - hour*3600)/60);
+        seconds = totalSeconds - (hour*3600 + minute*60);
+
+        document.getElementById("hour").innerHTML =hour;
+        document.getElementById("minute").innerHTML =minute;
+        document.getElementById("seconds").innerHTML =seconds;
+    }
+
+    document.getElementById('start-btn').addEventListener('click', () => {
+        intervalId = setInterval(startTimer, 1000);
+    })
+
+    document.getElementById('stop-btn').addEventListener('click', () => {
+        if (intervalId)
+            clearInterval(intervalId);
+    });
+
+
+    document.getElementById('reset-btn').addEventListener('click', () => {
+        totalSeconds = 0;
+        document.getElementById("hour").innerHTML = '0';
+        document.getElementById("minute").innerHTML = '0';
+        document.getElementById("seconds").innerHTML = '0';
+    });
+}
+
+
+
+
+
+
+</script>
+
+
+<form>
+
+</form>
+
 </body>
 </html>

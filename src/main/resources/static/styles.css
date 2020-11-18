@@ -1,4 +1,4 @@
-/*
+
 #logotipas{
 
  max-width: 200px;
@@ -14,9 +14,14 @@ float: right;
     clear: both;
     position: relative;
 }
+#oneline{
+display: inline-block;
+}
+/*
 body{
   background-image: url("background.jpg");
 
 
   background-repeat: no-repeat;
-}*/
+}
+*/

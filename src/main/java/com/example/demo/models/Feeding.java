@@ -95,8 +95,8 @@ public class Feeding {
                 "feedingId=" + feedingId +
                 ", baby=" + baby +
                 ", babyId=" + babyId +
-                ", feedingDate=" + feedingDate +
-                ", feedingTime=" + feedingTime +
+                ", feedingDate='" + feedingDate + '\'' +
+                ", feedingTime='" + feedingTime + '\'' +
                 ", feedingType=" + feedingType +
                 ", foodTypes=" + foodTypes +
                 '}';
