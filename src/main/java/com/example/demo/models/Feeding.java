@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Feeding {
@@ -20,12 +21,18 @@ public class Feeding {
     private Long babyId;
     private String feedingDate;
     private String feedingTime;
+    private String feedingPeriod;
 
     private Long feedingType;
 
-    @OneToMany(mappedBy="feeding", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    private List<FoodType> foodTypes;
+    // @OneToMany(mappedBy="feeding", fetch = FetchType.LAZY,
+    //         cascade = CascadeType.ALL)
+    // private List<FoodType> foodTypes;
+
+    @ManyToMany(mappedBy = "feedingSet")
+
+
+    Set<FoodType> foodTypeSet;
 
 
     public Feeding() {
@@ -81,12 +88,28 @@ public class Feeding {
     }
 
 
-    public List<FoodType> getFoodTypes() {
-        return foodTypes;
+    // public List<FoodType> getFoodTypes() {
+    //     return foodTypes;
+    // }
+    //
+    // public void setFoodTypes(List<FoodType> foodTypes) {
+    //     this.foodTypes = foodTypes;
+    // }
+
+    public String getFeedingPeriod() {
+        return feedingPeriod;
     }
 
-    public void setFoodTypes(List<FoodType> foodTypes) {
-        this.foodTypes = foodTypes;
+    public void setFeedingPeriod(String feedingPeriod) {
+        this.feedingPeriod = feedingPeriod;
+    }
+
+    public Set<FoodType> getFoodTypeSet() {
+        return foodTypeSet;
+    }
+
+    public void setFoodTypeSet(Set<FoodType> foodTypeSet) {
+        this.foodTypeSet = foodTypeSet;
     }
 
     @Override
@@ -97,8 +120,9 @@ public class Feeding {
                 ", babyId=" + babyId +
                 ", feedingDate='" + feedingDate + '\'' +
                 ", feedingTime='" + feedingTime + '\'' +
+                ", feedingPeriod='" + feedingPeriod + '\'' +
                 ", feedingType=" + feedingType +
-                ", foodTypes=" + foodTypes +
+                ", foodTypeSet=" + foodTypeSet +
                 '}';
     }
 }

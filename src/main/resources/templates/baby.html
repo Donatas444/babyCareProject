@@ -29,22 +29,25 @@
             <label th:text="${baby.name} + ' feeding:'"></label>
         </h2>
     </div>
-    <form action="#" th:action="@{/addfeeding}" th:object="${feeding}" method="post">
 
-        <div  class="row">
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <form id="form3" action="#" th:action="@{//addfoodtype}" th:object="${foodType}" method="post">
                         <div class="input-group mb-3">
 
-                            <select class="custom-select" onchange="location = this.value;">
+                            <select class="custom-select">
                                 <option selected>Choose...</option>
-                                <option value="/babies">Left breast</option>
+                                <option th:value="1" >Left breast</option>
                                 <option value="2">Right breast</option>
                                 <option value="3">Formula</option>
 
                             </select>
                         </div>
+                    </form>
+                    <form id="form1" action="#" th:action="@{/addfeeding}" th:object="${feeding}" method="post">
+
 
                         <h5 class="card-title">Left breast</h5>
                         <p class="card-text">After pressing the "Start feeding" button timer starts to count your left
@@ -55,14 +58,15 @@
 
                         <div>
                             <label class="field">Start time:</label>
-                            <input type="time" id="start" th:value="${#dates.format(#dates.createNow() , 'HH:mm')}">
+                            <input name="feedingTime" type="time" id="start"
+                                   th:value="${#dates.format(#dates.createNow() , 'HH:mm')}">
                         </div>
                         <div>
                             <label class="field">Stop time:</label>
                             <input type="time" id="end"
                                    th:value="${#dates.format(#dates.createNow() , 'HH:mm')}"></input>
                         </div>
-                        <input type="hidden" name="feedingTime" id="diff"/>
+                        <input type="hidden" name="feedingPeriod" id="diff"/>
                         <div class="row">
                             <div class="col-md-6 mt-5">
                                 <input type="submit" class="btn btn-warning btn-lg" value="Save entries">
@@ -99,17 +103,17 @@ setInterval(function(){document.getElementById("diff").value = diff(start, end);
 
 
 
+
                         </script>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 
 
-    </form>
-<form>
-    <div  class="row">
+
+    <div class="row">
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
@@ -151,8 +155,16 @@ setInterval(function(){document.getElementById("diff").value = diff(start, end);
             </div>
         </div>
     </div>
-</form>
 
+    <input type="submit" class="btn btn-warning btn-lg" value="Click Me!" onclick="submitForms()"/>
+    <script>
+    submitForms = function(){
+    document.getElementById("form1").submit();
+    document.getElementById("form3").submit();
+
+    }
+
+    </script>
 
     <div class="container">
         <div class="page-header">
@@ -178,8 +190,6 @@ setInterval(function(){document.getElementById("diff").value = diff(start, end);
         </table>
     </div>
 
-
-</div>
 <footer class="footer navbar-inverse navbar-fixed-bottom">
     <div class="container">
         <div class="row">
@@ -238,6 +248,7 @@ setInterval(function(){document.getElementById("diff").value = diff(start, end);
         document.getElementById("seconds").innerHTML = '0';
     });
 }
+
 
 
 

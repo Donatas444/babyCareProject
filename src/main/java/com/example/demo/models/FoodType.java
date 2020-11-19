@@ -1,6 +1,7 @@
 package com.example.demo.models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class FoodType {
@@ -9,12 +10,17 @@ public class FoodType {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer foodTypeId;
     private int formulaMl;
-    private Integer leftBreastTimer;
-    private Integer rightBreastTimer;
-    @ManyToOne
-    @JoinColumn(name = "feedingId")
-    private Feeding feeding;
-
+    private String leftBreast;
+    private String rightBreast;
+    // @ManyToOne
+    // @JoinColumn(name = "feedingId")
+    // private Feeding feeding;
+    @ManyToMany
+    @JoinTable(
+            name = "feeding_food_type",
+            joinColumns = @JoinColumn(name = "food_type_id"),
+            inverseJoinColumns = @JoinColumn(name = "feeding_type"))
+    Set<Feeding> feedingSet;
 
     public FoodType() {
     }
@@ -35,28 +41,37 @@ public class FoodType {
         this.formulaMl = formulaMl;
     }
 
-    public Integer getLeftBreastTimer() {
-        return leftBreastTimer;
+    public String getLeftBreast() {
+        return leftBreast;
     }
 
-    public void setLeftBreastTimer(Integer leftBreastTimer) {
-        this.leftBreastTimer = leftBreastTimer;
+    public void setLeftBreast(String leftBreast) {
+        this.leftBreast = leftBreast;
     }
 
-    public Integer getRightBreastTimer() {
-        return rightBreastTimer;
+    public String getRightBreast() {
+        return rightBreast;
     }
 
-    public void setRightBreastTimer(Integer rightBreastTimer) {
-        this.rightBreastTimer = rightBreastTimer;
+    public void setRightBreast(String rightBreast) {
+        this.rightBreast = rightBreast;
     }
 
-    public Feeding getFeeding() {
-        return feeding;
+    // public Feeding getFeeding() {
+    //     return feeding;
+    // }
+    //
+    // public void setFeeding(Feeding feeding) {
+    //     this.feeding = feeding;
+    // }
+
+
+    public Set<Feeding> getFeedingSet() {
+        return feedingSet;
     }
 
-    public void setFeeding(Feeding feeding) {
-        this.feeding = feeding;
+    public void setFeedingSet(Set<Feeding> feedingSet) {
+        this.feedingSet = feedingSet;
     }
 
     @Override
@@ -64,9 +79,9 @@ public class FoodType {
         return "FoodType{" +
                 "foodTypeId=" + foodTypeId +
                 ", formulaMl=" + formulaMl +
-                ", leftBreastTimer=" + leftBreastTimer +
-                ", rightBreastTimer=" + rightBreastTimer +
-                ", feeding=" + feeding +
+                ", leftBreast='" + leftBreast + '\'' +
+                ", rightBreast='" + rightBreast + '\'' +
+                ", feedingSet=" + feedingSet +
                 '}';
     }
 }
