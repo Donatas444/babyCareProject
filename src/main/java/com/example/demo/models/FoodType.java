@@ -19,7 +19,7 @@ public class FoodType {
     @JoinTable(
             name = "feeding_food_type",
             joinColumns = @JoinColumn(name = "food_type_id"),
-            inverseJoinColumns = @JoinColumn(name = "feeding_type"))
+            inverseJoinColumns = @JoinColumn(name = "feeding_id"))
     Set<Feeding> feedingSet;
 
     public FoodType() {

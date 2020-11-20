@@ -29,10 +29,8 @@ public class FoodTypeController {
     }
 
     @PostMapping("/addfoodtype")
-    public String addFoodType(FoodType foodType, Model model) {
+    public void addFoodType(FoodType foodType) {
         foodTypeService.addFoodType(foodType);
-        model.addAttribute("foodtypes", foodTypeService.getAllFoodTypes());
-        return "foodtypes";
     }
     @GetMapping("/deletefoodtype/{foodTypeId}")
     public String deleteFoodType(@PathVariable("foodTypeId") Long foodTypeId, Model model) {

@@ -8,9 +8,10 @@ import java.time.LocalTime;
 public class Diapers {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private boolean diaperId;
-    private LocalDate dateDiapersChanged;
-    private LocalTime timeDiapersChanged;
+    private Long diaperId;
+    private Long babyId;
+    private String dateDiapersChanged;
+    private String timeDiapersChanged;
     @ManyToOne
     @JoinColumn(name = "id")
     private Baby baby;
@@ -18,19 +19,19 @@ public class Diapers {
     public Diapers() {
     }
 
-    public boolean isDiaperId() {
+    public Long isDiaperId() {
         return diaperId;
     }
 
-    public void setDiaperId(boolean diaperId) {
+    public void setDiaperId(Long diaperId) {
         this.diaperId = diaperId;
     }
 
-    public LocalDate getDateDiapersChanged() {
+    public String getDateDiapersChanged() {
         return dateDiapersChanged;
     }
 
-    public void setDateDiapersChanged(LocalDate dateDiapersChanged) {
+    public void setDateDiapersChanged(String dateDiapersChanged) {
         this.dateDiapersChanged = dateDiapersChanged;
     }
 
@@ -42,20 +43,33 @@ public class Diapers {
         this.baby = baby;
     }
 
-    public LocalTime getTimeDiapersChanged() {
+    public String getTimeDiapersChanged() {
         return timeDiapersChanged;
     }
 
-    public void setTimeDiapersChanged(LocalTime timeDiapersChanged) {
+    public void setTimeDiapersChanged(String timeDiapersChanged) {
         this.timeDiapersChanged = timeDiapersChanged;
+    }
+
+    public Long getDiaperId() {
+        return diaperId;
+    }
+
+    public Long getBabyId() {
+        return babyId;
+    }
+
+    public void setBabyId(Long babyId) {
+        this.babyId = babyId;
     }
 
     @Override
     public String toString() {
         return "Diapers{" +
                 "diaperId=" + diaperId +
-                ", dateDiapersChanged=" + dateDiapersChanged +
-                ", timeDiapersChanged=" + timeDiapersChanged +
+                ", babyId=" + babyId +
+                ", dateDiapersChanged='" + dateDiapersChanged + '\'' +
+                ", timeDiapersChanged='" + timeDiapersChanged + '\'' +
                 ", baby=" + baby +
                 '}';
     }

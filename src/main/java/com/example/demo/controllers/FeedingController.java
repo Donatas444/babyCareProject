@@ -41,7 +41,6 @@ public class FeedingController {
     @PostMapping("/addfeeding")
     public void addFeeding(Feeding feeding) {
         feedingService.addFeeding(feeding);
-
     }
 
     @GetMapping("/deletefeeding/{feedingId}")
@@ -63,7 +62,7 @@ public class FeedingController {
     //     return "tester2";
     // }
 
-//sutvarkyti sita.....
+    //sutvarkyti sita.....
     @PostMapping("/assignfeeding/{babyId}")
     public Feeding createFeeding(@PathVariable Long id, Long babyId, Baby baby, @RequestBody Feeding feeding) {
 
