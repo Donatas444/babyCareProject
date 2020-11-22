@@ -28,6 +28,9 @@ public class FeedingService {
         return feedingRepository.findById(feedingId).get();
     }
     public void addFeeding(Feeding feeding) {
+        Baby baby = new Baby();
+        baby.setId(feeding.getBabyId());
+        feeding.setBaby(baby);
         feedingRepository.save(feeding);
     }
     public void removeFeeding(Feeding feeding) {

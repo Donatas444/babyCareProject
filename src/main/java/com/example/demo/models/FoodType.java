@@ -9,9 +9,9 @@ public class FoodType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer foodTypeId;
-    private int formulaMl;
-    private String leftBreast;
-    private String rightBreast;
+    private boolean formulaMl;
+    private boolean leftBreast;
+    private boolean rightBreast;
     // @ManyToOne
     // @JoinColumn(name = "feedingId")
     // private Feeding feeding;
@@ -33,27 +33,27 @@ public class FoodType {
         this.foodTypeId = foodTypeId;
     }
 
-    public int getFormulaMl() {
+    public boolean getFormulaMl() {
         return formulaMl;
     }
 
-    public void setFormulaMl(int formulaMl) {
+    public void setFormulaMl(boolean formulaMl) {
         this.formulaMl = formulaMl;
     }
 
-    public String getLeftBreast() {
+    public boolean getLeftBreast() {
         return leftBreast;
     }
 
-    public void setLeftBreast(String leftBreast) {
+    public void setLeftBreast(boolean leftBreast) {
         this.leftBreast = leftBreast;
     }
 
-    public String getRightBreast() {
+    public boolean getRightBreast() {
         return rightBreast;
     }
 
-    public void setRightBreast(String rightBreast) {
+    public void setRightBreast(boolean rightBreast) {
         this.rightBreast = rightBreast;
     }
 
@@ -79,8 +79,8 @@ public class FoodType {
         return "FoodType{" +
                 "foodTypeId=" + foodTypeId +
                 ", formulaMl=" + formulaMl +
-                ", leftBreast='" + leftBreast + '\'' +
-                ", rightBreast='" + rightBreast + '\'' +
+                ", leftBreast=" + leftBreast +
+                ", rightBreast=" + rightBreast +
                 ", feedingSet=" + feedingSet +
                 '}';
     }

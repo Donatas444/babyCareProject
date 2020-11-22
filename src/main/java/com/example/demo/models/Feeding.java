@@ -17,11 +17,12 @@ public class Feeding {
     @JoinColumn(name = "id")
     private Baby baby;
 
-
+//@Transient
     private Long babyId;
     private String feedingDate;
     private String feedingTime;
     private String feedingPeriod;
+    private String feedingAmount;
 
     private Long feedingType;
 
@@ -112,6 +113,14 @@ public class Feeding {
         this.foodTypeSet = foodTypeSet;
     }
 
+    public String getFeedingAmount() {
+        return feedingAmount;
+    }
+
+    public void setFeedingAmount(String feedingAmount) {
+        this.feedingAmount = feedingAmount;
+    }
+
     @Override
     public String toString() {
         return "Feeding{" +
@@ -121,6 +130,7 @@ public class Feeding {
                 ", feedingDate='" + feedingDate + '\'' +
                 ", feedingTime='" + feedingTime + '\'' +
                 ", feedingPeriod='" + feedingPeriod + '\'' +
+                ", feedingAmount='" + feedingAmount + '\'' +
                 ", feedingType=" + feedingType +
                 ", foodTypeSet=" + foodTypeSet +
                 '}';

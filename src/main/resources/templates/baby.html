@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" src="/javatest.js"></script>
 
 
 </head>
@@ -37,13 +38,17 @@
                     <form id="form3" action="#" th:action="@{//addfoodtype}" th:object="${foodType}" method="post">
                         <div class="input-group mb-3">
 
-                            <select class="custom-select">
+                            <select id="purpose" class="custom-select">
                                 <option selected>Choose...</option>
-                                <option th:value="1">Left breast</option>
-                                <option value="2">Right breast</option>
-                                <option value="3">Formula</option>
+
+                                <option value="2">Breast feeding</option>
+                                <option value="1">Formula</option>
 
                             </select>
+                            <script>
+
+
+                            </script>
                         </div>
                     </form>
                     <form id="form1" action="#" th:action="@{/addfeeding}" th:object="${feeding}" method="post">
@@ -56,16 +61,28 @@
                                th:value="${#dates.format(#dates.createNow() , 'yyyy-MM-dd')}"/>
                         <input type="hidden" name="babyId" id="babyId" th:value="${baby.id}"/>
 
-                        <div>
-                            <label class="field">Start time:</label>
-                            <input name="feedingTime" type="time" id="start"
-                                   th:value="${#dates.format(#dates.createNow() , 'HH:mm')}">
+
+                        <div style='display:none;' id="business">
+                            Enter feeded amount in ml<br/>&nbsp;
+                            <br/>&nbsp;
+                            <input type="text" placeholder="Enter amount in ml if formula is feeded."
+                                   name="feedingAmount" th:value="${feedingAmount}"/>
+                            <br/>
                         </div>
-                        <div>
-                            <label class="field">Stop time:</label>
-                            <input type="time" id="end"
-                                   th:value="${#dates.format(#dates.createNow() , 'HH:mm')}"></input>
+
+                        <div style='display:none;' id="business_new">
+                            <div>
+                                <label class="field">Start time:</label>
+                                <input name="feedingTime" type="time" id="start"
+                                       th:value="${#dates.format(#dates.createNow() , 'HH:mm')}">
+                            </div>
+                            <div>
+                                <label class="field">Stop time:</label>
+                                <input type="time" id="end"
+                                       th:value="${#dates.format(#dates.createNow() , 'HH:mm')}"></input>
+                            </div>
                         </div>
+
                         <input type="hidden" name="feedingPeriod" id="diff"/>
                         <div class="row">
                             <div class="col-md-6 mt-5">
@@ -102,7 +119,12 @@ setInterval(function(){document.getElementById("diff").value = diff(start, end);
 
 
 
+
+
+
                         </script>
+
+
                     </form>
                 </div>
             </div>
@@ -112,12 +134,12 @@ setInterval(function(){document.getElementById("diff").value = diff(start, end);
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
-                    <form id="form2" action="#" th:action="@{/addfoodtype}" th:object="${foodType}" method="post">
+                    <form id="form2" action="#" th:action="@{/addfeeding}" th:object="${feeding}" method="post">
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label class="col-form-label">Formula (ml)</label>
-                                <input type="number" name="formulaMl" class="form-control"
-                                       placeholder="Enter amount in ml" step="1" th:value="${formulaMl}">
+                                <input type="number" name="feedingAmount" class="form-control"
+                                       placeholder="Enter amount in ml" step="1" th:value="${feedingAmount}">
 
 
                             </div>
@@ -143,12 +165,12 @@ setInterval(function(){document.getElementById("diff").value = diff(start, end);
                         </h6>
 
 
-                            <input type="hidden" name="dateDiapersChanged" id="dateDiapersChanged"
-                                   th:value="${#dates.format(#dates.createNow() , 'yyyy-MM-dd')}"/>
+                        <input type="hidden" name="dateDiapersChanged" id="dateDiapersChanged"
+                               th:value="${#dates.format(#dates.createNow() , 'yyyy-MM-dd')}"/>
 
-                            <input type="hidden" name="timeDiapersChanged" id="timeDiapersChanged"
-                                   th:value="${#dates.format(#dates.createNow() , 'HH:mm')}"/>
-                            <input type="hidden" name="babyId" th:value="${baby.id}"/>
+                        <input type="hidden" name="timeDiapersChanged" id="timeDiapersChanged"
+                               th:value="${#dates.format(#dates.createNow() , 'HH:mm')}"/>
+                        <input type="hidden" name="babyId" th:value="${baby.id}"/>
 
                         <!--      <div class="btn-group" role="group" aria-label="Basic example">
                                  <button type="button" class="btn btn-secondary">+</button>
@@ -174,6 +196,9 @@ setInterval(function(){document.getElementById("diff").value = diff(start, end);
     document.getElementById("form3").submit();
 
     }
+
+
+
 
             </script>
         </div>
@@ -263,6 +288,9 @@ setInterval(function(){document.getElementById("diff").value = diff(start, end);
         document.getElementById("seconds").innerHTML = '0';
     });
 }
+
+
+
 
 
 

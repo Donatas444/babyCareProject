@@ -9,15 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.Year;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-
 @Controller
 public class FeedingController {
     @Autowired
@@ -64,17 +55,16 @@ public class FeedingController {
 
     //sutvarkyti sita.....
     @PostMapping("/assignfeeding/{babyId}")
-    public Feeding createFeeding(@PathVariable Long id, Long babyId, Baby baby, @RequestBody Feeding feeding) {
+    public void createBabyFeeding(@PathVariable Long id, Long babyId, Baby baby, Long feedingId, @RequestBody Feeding feeding) {
 
 
-        // babyService.getBabyById(id);
-        // feedingService.getFeedingById(babyId);
-        // feeding.setBaby(baby);
-        //     feeding.setBaby(baby.get());
-        // feedingService.addFeeding(feeding);
-        return feeding;
+        babyService.getBabyById(id);
+        feedingService.getFeedingById(feedingId);
+        feeding.setBaby(baby);
+        feedingService.addFeeding(feeding);
+
     }
-//save user's object
+
 
     @RequestMapping("/showform")
     public String showForm() {
@@ -84,7 +74,7 @@ public class FeedingController {
 
 
     @RequestMapping(value = "/processform", method = RequestMethod.POST)
-    public String processForm(@ModelAttribute(value = "foo") Feeding feeding) {
+    public String processForm(@ModelAttribute(value = "") Feeding feeding) {
         return "";
     }
 

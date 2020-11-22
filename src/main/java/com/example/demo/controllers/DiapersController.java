@@ -1,9 +1,7 @@
 package com.example.demo.controllers;
 
-import com.example.demo.models.Baby;
 import com.example.demo.models.Diapers;
 import com.example.demo.services.DiapersService;
-import com.example.demo.services.FoodTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
