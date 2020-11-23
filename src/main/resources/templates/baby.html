@@ -29,14 +29,12 @@
 </nav>
 
 
-
-
 <div class="justify-content-center">
 
     <div class="container">
         <h1 class="mb-5">Your baby's controller page</h1>
         <div class="row">
-            <!--  <div class="col-12 col-sm-8 col-md-6 col-lg-4"> -->
+
             <div class="card">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs" id="bologna-list" role="tablist">
@@ -163,100 +161,7 @@
 </div>
 
 
-                <!--         <form id="form3" action="#" th:action="@{//addfoodtype}" th:object="${foodType}" method="post">
-                             <div class="input-group mb-3">
 
-                                 <select id="purpose" class="custom-select">
-                                     <option selected>Choose...</option>
-
-                                     <option value="2">Breast feeding</option>
-                                     <option value="1">Formula</option>
-
-                                 </select>
-                                 <script>
-
-
-                                 </script>
-                             </div>
-                         </form>
-                         <form id="form1" action="#" th:action="@{/addfeeding}" th:object="${feeding}" method="post">
-
-
-                             <h5 class="card-title">Feeding</h5>
-                             <p class="card-text">Here you can choose your baby's feeding type and enter the values: milliliters
-                                 for formula, or duration for breast feeding.</p>
-                             <input type="hidden" name="feedingDate" id="feedingDate"
-                                    th:value="${#dates.format(#dates.createNow() , 'yyyy-MM-dd')}"/>
-                             <input type="hidden" name="babyId" id="babyId" th:value="${baby.id}"/>
-
-
-                             <div style='display:none;' id="business">
-                                 Enter feeded amount in ml<br/>&nbsp;
-                                 <br/>&nbsp;
-                                 <input type="text" placeholder="Enter amount in ml if formula is feeded."
-                                        name="feedingAmount" th:value="${feedingAmount}"/>
-                                 <br/>
-                             </div>
-
-                             <div style='display:none;' id="business_new">
-                                 <div>
-                                     <label class="field">Start time:</label>
-                                     <input name="feedingTime" type="time" id="start"
-                                            th:value="${#dates.format(#dates.createNow() , 'HH:mm')}">
-                                 </div>
-                                 <div>
-                                     <label class="field">Stop time:</label>
-                                     <input type="time" id="end"
-                                            th:value="${#dates.format(#dates.createNow() , 'HH:mm')}"></input>
-                                 </div>
-                             </div>
-
-                             <input type="hidden" name="feedingPeriod" id="diff"/>
-                             <div class="row">
-                                 <div class="col-md-6 mt-5">
-                                     <input type="submit" class="btn btn-warning btn-lg" value="Save entry">
-                                 </div>
-
-
-                             </div>
-                         </form>   -->
-            </div>
-        </div>
-    </div>
-
-
-    <!--  <div class="col-sm-6">
-           <div class="card">
-               <div class="card-body">
-
-                   <form id="diapersForm" action="#" th:action="@{/adddiaper}" th:object="${diapers}" method="post">
-                       <h5 class="card-title">Diapers</h5>
-                       <p class="card-text">Here you can mark checkbox if your baby diapers was changed.</p>
-
-                       <div>
-                           <input type="checkbox" id="chbox" required>
-                       </div>
-                       <div class="col-md-6 mt-5">
-                           <input type="submit" class="btn btn-warning btn-lg" value="Save entry">
-                       </div>
-                       <div>
-
-                       </div>
-
-                       <input type="hidden" name="dateDiapersChanged" id="dateDiapersChanged"
-                              th:value="${#dates.format(#dates.createNow() , 'yyyy-MM-dd')}"/>
-
-                       <input type="hidden" name="timeDiapersChanged" id="timeDiapersChanged"
-                              th:value="${#dates.format(#dates.createNow() , 'HH:mm')}"/>
-                       <input type="hidden" name="babyId" th:value="${baby.id}"/>
-
-
-                   </form>
-               </div>
-           </div>
-       </div>
-       </div>
-       </div> -->
 
 
     <div class="container">
@@ -309,48 +214,6 @@
         <button id="reset-btn">Reset</button>
     </h2>
 
-
-    <script>    window.onload = () => {
-    let hour = 0;
-    let minute = 0;
-    let seconds = 0;
-    let totalSeconds = 0;
-
-    function startTimer() {
-        ++totalSeconds;
-        hour = Math.floor(totalSeconds /3600);
-        minute = Math.floor((totalSeconds - hour*3600)/60);
-        seconds = totalSeconds - (hour*3600 + minute*60);
-
-        document.getElementById("hour").innerHTML =hour;
-        document.getElementById("minute").innerHTML =minute;
-        document.getElementById("seconds").innerHTML =seconds;
-    }
-
-    document.getElementById('start-btn').addEventListener('click', () => {
-        intervalId = setInterval(startTimer, 1000);
-    })
-
-    document.getElementById('stop-btn').addEventListener('click', () => {
-        if (intervalId)
-            clearInterval(intervalId);
-    });
-
-
-    document.getElementById('reset-btn').addEventListener('click', () => {
-        totalSeconds = 0;
-        document.getElementById("hour").innerHTML = '0';
-        document.getElementById("minute").innerHTML = '0';
-        document.getElementById("seconds").innerHTML = '0';
-    });
-}
-
-
-    </script>
-
-
-
-<script></script>
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/popper.min.js"></script>
