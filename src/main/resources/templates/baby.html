@@ -20,6 +20,11 @@
 
 </head>
 <body>
+<div class="myDiv">
+    <div class="bg"></div>
+
+</div>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -34,134 +39,132 @@
     <div class="container">
         <h1 class="mb-5">Your baby's controller page</h1>
         <div class="row">
-
-            <div class="card">
-                <div class="card-header">
-                    <ul class="nav nav-tabs card-header-tabs" id="bologna-list" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#description" role="tab" aria-controls="description"
-                               aria-selected="true">Feeding</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#history" role="tab" aria-controls="history"
-                               aria-selected="false">Diapers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#deals" role="tab" aria-controls="deals" aria-selected="false">Deals</a>
-                        </li>
-                    </ul>
-                </div>
-
-
-                <div class="card-body">
-                    <h4 class="card-title"><label th:text="${baby.name} + ' care:'"></label></h4>
-                    <h6 class="card-subtitle mb-2">Do not ferget to save values after you enter them.</h6>
-
-                    <div class="tab-content mt-3">
-                        <div class="tab-pane active" id="description" role="tabpanel">
-                            <form id="form3" action="#" th:action="@{//addfoodtype}" th:object="${foodType}"
-                                  method="post">
-                                <div class="input-group mb-3">
-
-                                    <select id="purpose" class="custom-select">
-                                        <option selected>Choose feeding type...</option>
-
-                                        <option value="2">Breast feeding</option>
-                                        <option value="1">Formula</option>
-
-                                    </select>
-                                    <script>
-
-
-                                    </script>
-                                </div>
-                            </form>
-                            <form id="form1" action="#" th:action="@{/addfeeding}" th:object="${feeding}" method="post">
-
-
-                                <h5 class="card-title">Feeding</h5>
-                                <p class="card-text">Here you can choose your baby's feeding type and enter the values:
-                                    milliliters
-                                    for formula, or duration for breast feeding.</p>
-                                <input type="hidden" name="feedingDate" id="feedingDate"
-                                       th:value="${#dates.format(#dates.createNow() , 'yyyy-MM-dd')}"/>
-                                <input type="hidden" name="babyId" id="babyId" th:value="${baby.id}"/>
-
-
-                                <div style='display:none;' id="business">
-                                    Enter feeded amount in ml<br/>&nbsp;
-                                    <br/>&nbsp;
-                                    <input type="text" placeholder="Enter amount in ml if formula is feeded."
-                                           name="feedingAmount" th:value="${feedingAmount}"/>
-                                    <br/>
-                                </div>
-
-                                <div style='display:none;' id="business_new">
-                                    <div>
-                                        <label class="field">Start time:</label>
-                                        <input name="feedingTime" type="time" id="start"
-                                               th:value="${#dates.format(#dates.createNow() , 'HH:mm')}">
-                                    </div>
-                                    <div>
-                                        <label class="field">Stop time:</label>
-                                        <input type="time" id="end"
-                                               th:value="${#dates.format(#dates.createNow() , 'HH:mm')}"></input>
-                                    </div>
-                                </div>
-
-                                <input type="hidden" name="feedingPeriod" id="diff"/>
-                                <div class="row">
-                                    <div class="col-md-6 mt-5">
-                                        <input type="submit" class="btn btn-warning btn-lg" value="Save entry">
-                                    </div>
-
-
-                                </div>
-                            </form>
+            <div class="col-lg-8 col-md-8 col-xs-8">
+                <div class="shadow p-3 mb-5 bg-white rounded">
+                    <div class="card">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs card-header-tabs" id="bologna-list" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#description" role="tab"
+                                       aria-controls="description"
+                                       aria-selected="true">Feeding</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#history" role="tab" aria-controls="history"
+                                       aria-selected="false">Diapers</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#deals" role="tab" aria-controls="deals"
+                                       aria-selected="false">Deals</a>
+                                </li>
+                            </ul>
                         </div>
 
-                        <div class="tab-pane" id="history" role="tabpanel" aria-labelledby="history-tab">
-                            <form id="diapersForm" action="#" th:action="@{/adddiaper}" th:object="${diapers}"
-                                  method="post">
-                                <h5 class="card-title">Diapers</h5>
-                                <p class="card-text">Mark checkbox if your baby's diapers was changed.</p>
 
-                                <div>
-                                    <input type="checkbox" id="chbox" required>
+                        <div class="card-body">
+                            <h4 class="card-title"><label th:text="${baby.name} + ' care:'"></label></h4>
+                            <h6 class="card-subtitle mb-2">Do not ferget to save values after you enter them.</h6>
+
+                            <div class="tab-content mt-3">
+                                <div class="tab-pane active" id="description" role="tabpanel">
+                                    <form id="form3" action="#" th:action="@{//addfoodtype}" th:object="${foodType}"
+                                          method="post">
+                                        <div class="input-group mb-3">
+
+                                            <select id="purpose" class="custom-select">
+                                                <option selected>Choose feeding type...</option>
+
+                                                <option value="2">Breast feeding</option>
+                                                <option value="1">Formula</option>
+
+                                            </select>
+
+                                        </div>
+                                    </form>
+                                    <form id="form1" action="#" th:action="@{/addfeeding}" th:object="${feeding}"
+                                          method="post">
+
+
+                                        <h5 class="card-title">Feeding</h5>
+                                        <p class="card-text">Here you can choose your baby's feeding type and enter the
+                                            values:
+                                            milliliters
+                                            for formula, or duration for breast feeding.</p>
+                                        <input type="hidden" name="feedingDate" id="feedingDate"
+                                               th:value="${#dates.format(#dates.createNow() , 'yyyy-MM-dd')}"/>
+                                        <input type="hidden" name="babyId" id="babyId" th:value="${baby.id}"/>
+
+
+                                        <div style='display:none;' id="business">
+                                            Enter feeded amount in ml<br/>&nbsp;
+                                            <br/>&nbsp;
+                                            <input type="text" placeholder="Enter amount in ml if formula is feeded."
+                                                   name="feedingAmount" th:value="${feedingAmount}"/>
+                                            <br/>
+                                        </div>
+
+                                        <div style='display:none;' id="business_new">
+                                            <div>
+                                                <label class="field">Start time:</label>
+                                                <input name="feedingTime" type="time" id="start"
+                                                       th:value="${#dates.format(#dates.createNow() , 'HH:mm')}">
+                                            </div>
+                                            <div>
+                                                <label class="field">Stop time:</label>
+                                                <input type="time" id="end"
+                                                       th:value="${#dates.format(#dates.createNow() , 'HH:mm')}"></input>
+                                            </div>
+                                        </div>
+
+                                        <input type="hidden" name="feedingPeriod" id="diff"/>
+
+                                        <div class="col-md-6 mt-5">
+                                            <input type="submit" class="btn btn-warning btn-lg" value="Save entry">
+                                        </div>
+
+                                    </form>
                                 </div>
-                                <div class="col-md-6 mt-5">
-                                    <input type="submit" class="btn btn-warning btn-lg" value="Save entry">
+
+                                <div class="tab-pane" id="history" role="tabpanel" aria-labelledby="history-tab">
+                                    <form id="diapersForm" action="#" th:action="@{/adddiaper}" th:object="${diapers}"
+                                          method="post">
+                                        <h5 class="card-title">Diapers</h5>
+                                        <p class="card-text">Mark checkbox if your baby's diapers was changed.</p>
+
+                                        <div>
+                                            <input type="checkbox" id="chbox" required>
+                                        </div>
+                                        <div class="col-md-6 mt-5">
+                                            <input type="submit" class="btn btn-warning btn-lg" value="Save entry">
+                                        </div>
+                                        <div>
+
+                                        </div>
+
+                                        <input type="hidden" name="dateDiapersChanged" id="dateDiapersChanged"
+                                               th:value="${#dates.format(#dates.createNow() , 'yyyy-MM-dd')}"/>
+
+                                        <input type="hidden" name="timeDiapersChanged" id="timeDiapersChanged"
+                                               th:value="${#dates.format(#dates.createNow() , 'HH:mm')}"/>
+                                        <input type="hidden" name="babyId" th:value="${baby.id}"/>
+
+
+                                    </form>
                                 </div>
-                                <div>
 
+                                <div class="tab-pane" id="deals" role="tabpanel" aria-labelledby="deals-tab">
+                                    <p class="card-text">Immerse yourself in the colours, aromas and traditions of
+                                        Emilia-Romagna with a holiday in Bologna, and discover the city's rich artistic
+                                        heritage.</p>
+                                    <a href="#" class="btn btn-danger btn-sm">Get Deals</a>
                                 </div>
-
-                                <input type="hidden" name="dateDiapersChanged" id="dateDiapersChanged"
-                                       th:value="${#dates.format(#dates.createNow() , 'yyyy-MM-dd')}"/>
-
-                                <input type="hidden" name="timeDiapersChanged" id="timeDiapersChanged"
-                                       th:value="${#dates.format(#dates.createNow() , 'HH:mm')}"/>
-                                <input type="hidden" name="babyId" th:value="${baby.id}"/>
-
-
-                            </form>
-                        </div>
-
-                        <div class="tab-pane" id="deals" role="tabpanel" aria-labelledby="deals-tab">
-                            <p class="card-text">Immerse yourself in the colours, aromas and traditions of
-                                Emilia-Romagna with a holiday in Bologna, and discover the city's rich artistic
-                                heritage.</p>
-                            <a href="#" class="btn btn-danger btn-sm">Get Deals</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
-
 
 
     <div class="container">
@@ -215,13 +218,12 @@
     </h2>
 
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/popper.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/popper.min.js"></script>
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-
-<script type="text/javascript" src="/javatest.js"></script>
-<script type="text/javascript" src="/choosetime.js"></script>
+    <script type="text/javascript" src="/javatest.js"></script>
+    <script type="text/javascript" src="/choosetime.js"></script>
 
 </body>
 </html>
