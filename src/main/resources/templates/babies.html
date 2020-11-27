@@ -10,8 +10,6 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-    <!--  <link rel="stylesheet" type="text/css" href="styles.css"> -->
-    <script src="javascript.js"></script>
     <link rel="stylesheet" type="text/css" href="/styles.css">
 
 </head>
@@ -35,16 +33,11 @@
             <th>Age</th>
             <th>Edit</th>
             <th>Delete</th>
-
-
-
         </tr>
 
+        <tr th:each="baby: ${babies}">
 
-
-     <tr th:each="baby: ${babies}">
-
-         <td> <a th:href="@{/baby/{id}(id=${baby.id})}"  th:text="${baby.name}" target="_self">Name</a></td>
+            <td><a th:href="@{/baby/{id}(id=${baby.id})}" th:text="${baby.name}" target="_self">Name</a></td>
             <td th:text="${baby.age}">Age</td>
 
 
@@ -52,26 +45,6 @@
             </td>
             <td><a th:href="@{/deletebaby/{id}(id=${baby.id})}" class="btn btn-primary"><i
                     class="fas fa-user-times ml-2"></i></a></td>
-
-
-        <!--       <tr th:each="feeding: ${feedings}">
-              <td th:text="${feeding.feedingDate}">Date</td>
-              <td th:text="${feeding.feedingTime}">Time</td>
-     <td><a th:href="@{/edit/{id}(id=${baby.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
-              </td>
-              <td><a th:href="@{/deletebaby/{id}(id=${baby.id})}" class="btn btn-primary"><i
-                      class="fas fa-user-times ml-2"></i></a></td>
-        </tr>
-<tr>
-        <td>Name</td>
-        <td>Age</td>
-</tr>
-        <tr th:each="baby: ${babies}">
-            <td th:text="${baby.name}">Name</td>
-            <td th:text="${baby.age}">Age</td>
-
-        </tr> -->
-
 
     </table>
 </div>

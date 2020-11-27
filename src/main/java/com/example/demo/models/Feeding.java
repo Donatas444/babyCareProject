@@ -31,12 +31,8 @@ public class Feeding {
     @JoinColumn(name = "typeId")
     private FoodType foodType;
 
-
-
     public Feeding() {
     }
-
-
     public Long getFeedingId() {
         return feedingId;
     }
@@ -84,15 +80,6 @@ public class Feeding {
     public void setFeedingType(Long feedingType) {
         this.feedingType = feedingType;
     }
-
-
-    // public List<FoodType> getFoodTypes() {
-    //     return foodTypes;
-    // }
-    //
-    // public void setFoodTypes(List<FoodType> foodTypes) {
-    //     this.foodTypes = foodTypes;
-    // }
 
     public String getFeedingPeriod() {
         return feedingPeriod;

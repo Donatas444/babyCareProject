@@ -26,11 +26,9 @@ public class DiapersService {
         diapersRepository.save(diapers);
     }
 
-
     public void removeDiaper(Diapers diapers){
         diapersRepository.delete(diapers);
     }
-
 
     public void updateDiaper(Diapers diapers) {
         diapersRepository.save(diapers);

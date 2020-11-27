@@ -12,9 +12,6 @@ public class FoodType {
     private Long foodTypeId;
     private String name;
 
-
-
-
     @OneToMany(mappedBy="foodType", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private List<Feeding> feedings;

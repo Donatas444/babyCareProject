@@ -42,12 +42,6 @@ public class BabyController {
         model.addAttribute("feedings", feedingService.getAllFeeding());
         return "/baby";
     }
-    // @GetMapping("/baby")
-    // private String getBaby(String name, Model model) {
-    //     model.addAttribute("baby", babyService.getBabyByName(name));
-    //     return "baby";
-    // }
-
 
     @PostMapping("/addbaby")
     public String addbaby(Baby baby, Model model) {  // pries Baby baby pridejus @RequestBody nenukreipia atgal i "babies" url'a
@@ -60,11 +54,6 @@ public class BabyController {
     public String addBabyForm(Baby baby) {
         return "baby_add";
     }
-
-    // @GetMapping("/removebaby/{id}")
-    // public void deleteBaby(@PathVariable("id") Baby baby) {
-    //     babyService.removeBaby(baby);
-    // }
 
     @GetMapping("/deletebaby/{id}")
     public String deleteBaby(@PathVariable("id") Long id, Model model) {
@@ -87,13 +76,4 @@ public class BabyController {
         model.addAttribute("baby", baby);
         return "baby-edit";
     }
-  /*   @PostMapping("/update/{id}")
-    public String updateBaby(@PathVariable("id") Long id, Model model, Baby baby, BindingResult result) {
-        babyService.addBaby(baby);
-        model.addAttribute("babies", babyService.getAllBabies());
-        return "babies";
-    }*/
-
-
-
 }
