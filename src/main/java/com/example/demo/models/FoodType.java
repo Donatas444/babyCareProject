@@ -1,6 +1,7 @@
 package com.example.demo.models;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -8,80 +9,50 @@ public class FoodType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer foodTypeId;
-    private boolean formulaMl;
-    private boolean leftBreast;
-    private boolean rightBreast;
-    // @ManyToOne
-    // @JoinColumn(name = "feedingId")
-    // private Feeding feeding;
-    @ManyToMany
-    @JoinTable(
-            name = "feeding_food_type",
-            joinColumns = @JoinColumn(name = "food_type_id"),
-            inverseJoinColumns = @JoinColumn(name = "feeding_id"))
-    Set<Feeding> feedingSet;
+    private Long foodTypeId;
+    private String name;
+
+
+
+
+    @OneToMany(mappedBy="foodType", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<Feeding> feedings;
+
 
     public FoodType() {
     }
 
-    public Integer getFoodTypeId() {
+    public Long getFoodTypeId() {
         return foodTypeId;
     }
 
-    public void setFoodTypeId(Integer foodTypeId) {
+    public void setFoodTypeId(Long foodTypeId) {
         this.foodTypeId = foodTypeId;
     }
 
-    public boolean getFormulaMl() {
-        return formulaMl;
+    public String getName() {
+        return name;
     }
 
-    public void setFormulaMl(boolean formulaMl) {
-        this.formulaMl = formulaMl;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public boolean getLeftBreast() {
-        return leftBreast;
+    public List<Feeding> getFeedings() {
+        return feedings;
     }
 
-    public void setLeftBreast(boolean leftBreast) {
-        this.leftBreast = leftBreast;
-    }
-
-    public boolean getRightBreast() {
-        return rightBreast;
-    }
-
-    public void setRightBreast(boolean rightBreast) {
-        this.rightBreast = rightBreast;
-    }
-
-    // public Feeding getFeeding() {
-    //     return feeding;
-    // }
-    //
-    // public void setFeeding(Feeding feeding) {
-    //     this.feeding = feeding;
-    // }
-
-
-    public Set<Feeding> getFeedingSet() {
-        return feedingSet;
-    }
-
-    public void setFeedingSet(Set<Feeding> feedingSet) {
-        this.feedingSet = feedingSet;
+    public void setFeedings(List<Feeding> feedings) {
+        this.feedings = feedings;
     }
 
     @Override
     public String toString() {
         return "FoodType{" +
                 "foodTypeId=" + foodTypeId +
-                ", formulaMl=" + formulaMl +
-                ", leftBreast=" + leftBreast +
-                ", rightBreast=" + rightBreast +
-                ", feedingSet=" + feedingSet +
+                ", name='" + name + '\'' +
+                ", feedings=" + feedings +
                 '}';
     }
 }

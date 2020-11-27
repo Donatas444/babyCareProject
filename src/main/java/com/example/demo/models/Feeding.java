@@ -26,14 +26,11 @@ public class Feeding {
 
     private Long feedingType;
 
-    // @OneToMany(mappedBy="feeding", fetch = FetchType.LAZY,
-    //         cascade = CascadeType.ALL)
-    // private List<FoodType> foodTypes;
+    @ManyToOne
 
-    @ManyToMany(mappedBy = "feedingSet")
+    @JoinColumn(name = "typeId")
+    private FoodType foodType;
 
-
-    Set<FoodType> foodTypeSet;
 
 
     public Feeding() {
@@ -105,13 +102,7 @@ public class Feeding {
         this.feedingPeriod = feedingPeriod;
     }
 
-    public Set<FoodType> getFoodTypeSet() {
-        return foodTypeSet;
-    }
 
-    public void setFoodTypeSet(Set<FoodType> foodTypeSet) {
-        this.foodTypeSet = foodTypeSet;
-    }
 
     public String getFeedingAmount() {
         return feedingAmount;
@@ -132,7 +123,7 @@ public class Feeding {
                 ", feedingPeriod='" + feedingPeriod + '\'' +
                 ", feedingAmount='" + feedingAmount + '\'' +
                 ", feedingType=" + feedingType +
-                ", foodTypeSet=" + foodTypeSet +
+                ", foodType=" + foodType +
                 '}';
     }
 }
