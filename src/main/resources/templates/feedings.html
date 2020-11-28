@@ -20,7 +20,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">Feeding list</a>
+            <a class="navbar-brand" href="/">Home</a>
 
 
         </div>
@@ -34,12 +34,15 @@
         <tr>
             <td>Date</td>
             <td>Time</td>
-            <td>Name</td>
+            <td>Feeding Amount (ml)</td>
+            <td>Feeding Time (ml)</td>
 
         </tr>
         <tr th:each="feeding: ${feedings}">
             <td th:text="${feeding.feedingDate}">Date</td>
             <td th:text="${feeding.feedingTime}">Time</td>
+            <td th:text="${feeding.feedingPeriod}">Feeding Amount (ml)</td>
+            <td th:text="${feeding.feedingAmount}">Feeding Time (ml)</td>
 
         </tr>
 

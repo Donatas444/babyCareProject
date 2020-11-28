@@ -110,3 +110,5 @@ $("#bologna-list a").on("click", function (e) {
         document.getElementById("seconds").innerHTML = '0';
     });
 }
+
+

@@ -7,6 +7,7 @@ import com.example.demo.services.FeedingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -30,8 +31,11 @@ public class FeedingController {
     }
 
     @PostMapping("/addfeeding")
-    public void addFeeding(Feeding feeding) {
+    public String addFeeding(Feeding feeding, Model model) {
         feedingService.addFeeding(feeding);
+        model.addAttribute("feedings", feedingService.getAllFeeding());
+        return "feedings";
+
     }
 
     @GetMapping("/deletefeeding/{feedingId}")
@@ -46,6 +50,7 @@ public class FeedingController {
         model.addAttribute("feedings", feedingService.getAllFeeding());
         return "redirect:/feedings";
     }
+
     @PostMapping("/assignfeeding/{babyId}")
     public void createBabyFeeding(@PathVariable Long id, Long babyId, Baby baby, Long feedingId, @RequestBody Feeding feeding) {
         babyService.getBabyById(id);
@@ -53,11 +58,13 @@ public class FeedingController {
         feeding.setBaby(baby);
         feedingService.addFeeding(feeding);
     }
+
     @RequestMapping("/showform")
     public String showForm() {
 
         return "tester";
     }
+
     @RequestMapping(value = "/processform", method = RequestMethod.POST)
     public String processForm(@ModelAttribute(value = "") Feeding feeding) {
         return "";
