@@ -44,7 +44,7 @@ public class BabyController {
     }
 
     @PostMapping("/addbaby")
-    public String addbaby(Baby baby, Model model) {  // pries Baby baby pridejus @RequestBody nenukreipia atgal i "babies" url'a
+    public String addbaby(Baby baby, Model model) {
         babyService.addBaby(baby);
         model.addAttribute("babies", babyService.getAllBabies());
         return "babies";
