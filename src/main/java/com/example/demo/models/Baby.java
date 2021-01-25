@@ -3,6 +3,7 @@ package com.example.demo.models;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -10,7 +11,7 @@ import java.util.Set;
 public class Baby {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) //Identity
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
 
@@ -24,15 +25,15 @@ public class Baby {
 
     private String name;
 
-    private double age;
+    private int age;
 
 
 
-    public double getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(double age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
